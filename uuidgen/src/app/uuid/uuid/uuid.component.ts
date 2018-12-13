@@ -15,7 +15,7 @@ import { MatSlideToggleChange } from '@angular/material';
 export class UuidComponent implements OnInit {
   uuidVersion: number;
   copied = false;
-  uuid: string;
+  uuid = '';
   isLoading = true;
   clientOnly = false;
   openOptions = false;
@@ -33,12 +33,12 @@ export class UuidComponent implements OnInit {
     this.route.paramMap.subscribe((paramsMap: ParamMap) => {
       this.uuid = '';
       this.uuidVersion = +paramsMap.get('version');
-      if (!this.uuidVersion) {
-        this.router.navigate(['v', '4']);
-      } else {
+      if (this.uuidVersion) {
         this.HTTP_API_ENDPOINT =
           environment.apiEndpoint + '/v' + this.uuidVersion;
         this.fetchUuid();
+      } else {
+        this.router.navigate(['v', '4']);
       }
     });
   }
@@ -65,7 +65,7 @@ export class UuidComponent implements OnInit {
     }
   }
 
-  fetchUuid() {
+  private fetchUuid() {
     this.isLoading = true;
     if (this.clientOnly) {
       this.analyticsService.emitEvent('click', 'refreshUuidClient');
