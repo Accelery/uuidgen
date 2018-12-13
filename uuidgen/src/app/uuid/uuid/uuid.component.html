@@ -13,10 +13,28 @@
       readonly
     ></textarea>
     <span class="button-row">
-      <button mat-icon-button (click)="refresh()">
+      <button
+        mat-icon-button
+        (click)="toggleShowOptions()"
+        matTooltip="More options"
+        matTooltipShowDelay="500"
+      >
+        <mat-icon>more_horiz</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        (click)="refresh()"
+        matTooltip="Get a new UUID."
+        matTooltipShowDelay="500"
+      >
         <mat-icon>refresh</mat-icon>
       </button>
-      <button mat-icon-button (click)="copyToClip()">
+      <button
+        mat-icon-button
+        (click)="copyToClip()"
+        matTooltip="Copy UUID to clipboard"
+        matTooltipShowDelay="500"
+      >
         <mat-icon>file_copy</mat-icon>
       </button>
       <button mat-icon-button color="primary" [hidden]="!copied">
@@ -24,6 +42,15 @@
       </button>
     </span>
   </div>
+  <mat-slide-toggle
+    *ngIf="openOptions"
+    color="primary"
+    [checked]="!clientOnly"
+    (change)="onSliderChange($event)"
+  >
+    Go Online! &nbsp;
+    <mat-icon inline>{{ !clientOnly ? 'cloud_on' : 'cloud_off' }}</mat-icon>
+  </mat-slide-toggle>
 </mat-card>
 
 <mat-card>

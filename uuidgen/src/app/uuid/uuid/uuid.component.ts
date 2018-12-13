@@ -1,22 +1,24 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import * as copy from 'copy-to-clipboard';
 import { environment } from 'src/environments/environment';
 import { AnalyticsService } from 'src/app/analytics.service';
 import { UuidService } from '../uuid.service';
+import { MatSlideToggleChange } from '@angular/material';
 
 @Component({
   selector: 'app-uuid',
   templateUrl: './uuid.component.html',
   styleUrls: ['./uuid.component.scss'],
 })
-export class UuidComponent implements OnInit, OnDestroy {
+export class UuidComponent implements OnInit {
   uuidVersion: number;
   copied = false;
   uuid: string;
   isLoading = true;
   clientOnly = false;
+  openOptions = false;
   private HTTP_API_ENDPOINT: string;
   private copyTimeout: number;
   constructor(
@@ -44,7 +46,13 @@ export class UuidComponent implements OnInit, OnDestroy {
   refresh() {
     this.fetchUuid();
   }
-  ngOnDestroy() {}
+
+  onSliderChange($event: MatSlideToggleChange) {
+    this.clientOnly = !$event.checked;
+  }
+  toggleShowOptions() {
+    this.openOptions = !this.openOptions;
+  }
 
   copyToClip() {
     this.analyticsService.emitEvent('click', 'copyToClipboard');

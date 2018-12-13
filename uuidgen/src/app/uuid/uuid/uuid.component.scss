@@ -14,11 +14,11 @@ $break-point: 626px;
   color: black;
   border: white solid 2px;
   resize: none;
-  padding: 10px;
+  padding: 12px;
+  margin: auto;
+  display: block;
   @media screen and (max-width: $break-point) {
     font-size: 16px;
-    margin: auto;
-    display: block;
     padding: 8px;
   }
   @media screen and (max-width: 400px) {
@@ -39,19 +39,10 @@ mat-card {
   }
 }
 
-button {
-  top: -20px;
-  @media screen and (max-width: $break-point) {
-    top: 0;
-  }
-}
-
 .button-row {
-  @media screen and (max-width: $break-point) {
-    display: block;
-    margin: auto;
-    text-align: center;
-  }
+  display: block;
+  margin: auto;
+  text-align: center;
 }
 
 h1 {

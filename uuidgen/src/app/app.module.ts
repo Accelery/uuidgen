@@ -9,6 +9,7 @@ import {
   MatProgressSpinnerModule,
   MatMenuModule,
   MatSlideToggleModule,
+  MatTooltipModule,
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -31,6 +32,7 @@ import { FooterComponent } from './footer/footer.component';
     MatIconModule,
     MatCardModule,
     MatMenuModule,
+    MatTooltipModule,
     MatProgressSpinnerModule,
     MatSlideToggleModule,
     HttpClientModule,
