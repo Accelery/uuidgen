@@ -1,4 +1,6 @@
-<p>uuidv4 works! {{ uuid }}</p>
+<h2>Freshly generated V{{ uuidVersion }} UUID 🌟</h2>
+
+<pre>{{ uuid }}</pre>
 
 <button mat-raised-button (click)="copyToClip()">Copy!</button>
 <span *ngIf="copied">Copied</span>

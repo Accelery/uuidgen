@@ -9,12 +9,12 @@ import {
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import { Uuidv4Component } from './uuid/uuidv4/uuidv4.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UuidComponent } from './uuid/uuid/uuid.component';
 
 @NgModule({
-  declarations: [AppComponent, Uuidv4Component, HeaderComponent],
+  declarations: [AppComponent, HeaderComponent, UuidComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
