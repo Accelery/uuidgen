@@ -9,6 +9,7 @@ $break-point: 626px;
   border-radius: 5px;
   max-width: 500px;
   min-height: 20px;
+  font-family: 'Roboto Mono', monospace;
   font-size: 20px;
   color: black;
   border: white solid 2px;
@@ -26,7 +27,7 @@ $break-point: 626px;
 }
 
 mat-card {
-  max-width: 548px;
+  max-width: 552px;
   margin: auto;
   margin-top: 30px;
   padding: 30px;

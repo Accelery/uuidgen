@@ -5,6 +5,7 @@ import { UuidComponent } from './uuid/uuid/uuid.component';
 const routes: Routes = [
   { path: 'v/:version', component: UuidComponent },
   { path: '', redirectTo: '/v/4', pathMatch: 'full' },
+  { path: '**', redirectTo: '/v/4', pathMatch: 'full' },
 ];
 
 @NgModule({

@@ -7,6 +7,8 @@ import {
   MatIconModule,
   MatCardModule,
   MatProgressSpinnerModule,
+  MatMenuModule,
+  MatSlideToggleModule,
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -28,7 +30,9 @@ import { FooterComponent } from './footer/footer.component';
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
+    MatMenuModule,
     MatProgressSpinnerModule,
+    MatSlideToggleModule,
     HttpClientModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
