@@ -48,7 +48,7 @@
     [checked]="!clientOnly"
     (change)="onSliderChange($event)"
   >
-    Go Online! &nbsp;
+    {{ !clientOnly ? "You're Online" : 'Go Online' }}! &nbsp;
     <mat-icon inline>{{ !clientOnly ? 'cloud_on' : 'cloud_off' }}</mat-icon>
   </mat-slide-toggle>
 </mat-card>
