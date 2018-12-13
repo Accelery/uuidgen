@@ -3,20 +3,20 @@
   border-radius: 5px;
   max-width: 500px;
   min-height: 20px;
-  text-align: center;
   font-size: 24px;
   color: black;
   border: white solid 2px;
-  margin-bottom: 10px;
+  resize: none;
   padding: 10px;
   @media screen and (max-width: 700px) {
     font-size: 16px;
+    margin: auto;
     display: block;
   }
 }
 
 mat-card {
-  max-width: 620px;
+  max-width: 632px;
   margin: auto;
   margin-top: 30px;
   padding: 30px;
@@ -24,6 +24,19 @@ mat-card {
     font-size: 16px;
     display: block;
     padding: 10px;
+  }
+}
+
+button {
+  top: -20px;
+  @media screen and (max-width: 700px) {
+    top: 0;
+  }
+}
+
+.button-row {
+  @media screen and (max-width: 700px) {
+    margin: auto;
   }
 }
 

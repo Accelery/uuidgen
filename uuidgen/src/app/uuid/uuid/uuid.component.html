@@ -3,17 +3,26 @@
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <div *ngIf="!isLoading">
     <p>Your new Version {{ uuidVersion }} UUID:</p>
-    <code class="uuid">{{ uuid }}</code>
-
-    <button mat-icon-button (click)="refresh()">
-      <mat-icon>refresh</mat-icon>
-    </button>
-    <button mat-icon-button (click)="copyToClip()">
-      <mat-icon>file_copy</mat-icon>
-    </button>
-    <button mat-icon-button color="primary" *ngIf="copied">
-      <mat-icon>check</mat-icon>
-    </button>
+    <textarea
+      class="uuid"
+      cols="36"
+      rows="1"
+      #MyUuid
+      (click)="MyUuid.select()"
+      [defaultValue]="uuid"
+      readonly
+    ></textarea>
+    <span class="button-row">
+      <button mat-icon-button (click)="refresh()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+      <button mat-icon-button (click)="copyToClip()">
+        <mat-icon>file_copy</mat-icon>
+      </button>
+      <button mat-icon-button color="primary" *ngIf="copied">
+        <mat-icon>check</mat-icon>
+      </button>
+    </span>
   </div>
 </mat-card>
 
@@ -25,15 +34,14 @@
     <span [ngSwitch]="uuidVersion">
       <p *ngSwitchCase="1">
         A Version 1 UUID is a
-        <strong>universally unique identifier</strong>
-        that is generated using a timestamp and the MAC address of the computer
-        on which it was generated.
+        <strong>universally unique identifier</strong> that is generated using a
+        timestamp and the MAC address of the computer on which it was generated.
       </p>
       <p *ngSwitchCase="4">
         A Version 4 UUID is a
-        <strong>universally unique identifier</strong>
-        that is generated using random numbers. The UUIDs from this website were
-        generated using a cryptographically-strong random number generator.
+        <strong>universally unique identifier</strong> that is generated using
+        random numbers. The UUIDs from this website were generated using a
+        cryptographically-strong random number generator.
       </p>
       <p *ngSwitchDefault>dunno</p>
     </span>

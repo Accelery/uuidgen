@@ -7,32 +7,32 @@ var router = express.Router();
 const singleUuidFactory = uuidGenMethod => {
   return (req, res) => {
     const uuid = uuidGenMethod();
-    const message = 'OK';
-    res.status(200).json({ uuid, message });
+    const statusText = 'OK';
+    res.status(200).json({ uuid, statusText });
   };
 };
 
 const multiUuidFactory = uuidGenMethod => {
   return (req, res) => {
     let uuids = [];
-    let message = 'invalid request.';
+    let statusText = 'invalid request.';
     let status = 400;
 
     // Parse param to number.
     let num = +req.params.number;
     if (num) {
-      message = 'OK';
+      statusText = 'OK';
       // Limit to 10;
       if (num > 10) {
         num = 10;
-        message = 'OK. 10 UUIDs max.';
+        statusText = 'OK. 10 UUIDs max.';
       }
       for (let i = 0; i <= num; i++) {
         uuids.push(uuidGenMethod());
       }
       status = 200;
     }
-    res.status(status).json({ uuids, message });
+    res.status(status).json({ uuids, statusText });
   };
 };
 

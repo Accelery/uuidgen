@@ -26,6 +26,7 @@ export class UuidComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.route.paramMap.subscribe((paramsMap: ParamMap) => {
       this.uuidVersion = paramsMap.get('version');
+      this.uuid = '';
       this.HTTP_API_ENDPOINT =
         environment.apiEndpoint + '/v' + this.uuidVersion;
       this.fetchUuid();
@@ -56,9 +57,14 @@ export class UuidComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.http
       .get<{ message: string; uuid: string }>(this.HTTP_API_ENDPOINT)
-      .subscribe(response => {
-        this.isLoading = false;
-        this.uuid = response.uuid;
-      });
+      .subscribe(
+        response => {
+          this.isLoading = false;
+          this.uuid = response.uuid;
+        },
+        error => {
+          this.isLoading = false;
+        }
+      );
   }
 }
