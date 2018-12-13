@@ -19,7 +19,7 @@
       <button mat-icon-button (click)="copyToClip()">
         <mat-icon>file_copy</mat-icon>
       </button>
-      <button mat-icon-button color="primary" *ngIf="copied">
+      <button mat-icon-button color="primary" [hidden]="!copied">
         <mat-icon>check</mat-icon>
       </button>
     </span>

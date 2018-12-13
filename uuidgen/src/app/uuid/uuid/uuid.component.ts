@@ -39,12 +39,9 @@ export class UuidComponent implements OnInit, OnDestroy {
   ngOnDestroy() {}
 
   copyToClip() {
-    // Reset everything!
     this.analyticsService.emitEvent('click', 'copyToClipboard');
-
     this.copied = false;
     window.clearTimeout(this.copyTimeout);
-
     const success = copy(this.uuid);
     if (success) {
       this.copied = true;

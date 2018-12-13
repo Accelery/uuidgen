@@ -13,7 +13,7 @@ app.use(cors());
 app.use(logger('dev'));
 
 const limiter = rateLimit({
-  max: 6, // limit each IP to 100 requests per minute.
+  max: 60, // limit each IP to 100 requests per minute.
 });
 app.use(limiter);
 

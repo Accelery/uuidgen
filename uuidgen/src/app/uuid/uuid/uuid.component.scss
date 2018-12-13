@@ -1,26 +1,37 @@
+$break-point: 626px;
+
+[hidden] {
+  opacity: 0;
+}
+
 .uuid {
   background-color: lightgray;
   border-radius: 5px;
   max-width: 500px;
   min-height: 20px;
-  font-size: 24px;
+  font-size: 20px;
   color: black;
   border: white solid 2px;
   resize: none;
   padding: 10px;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: $break-point) {
     font-size: 16px;
     margin: auto;
     display: block;
+    padding: 8px;
+  }
+  @media screen and (max-width: 400px) {
+    font-size: 12px;
   }
 }
 
 mat-card {
-  max-width: 632px;
+  max-width: 548px;
   margin: auto;
   margin-top: 30px;
   padding: 30px;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: $break-point) {
+    margin: 10px 18px;
     font-size: 16px;
     display: block;
     padding: 10px;
@@ -29,20 +40,22 @@ mat-card {
 
 button {
   top: -20px;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: $break-point) {
     top: 0;
   }
 }
 
 .button-row {
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: $break-point) {
+    display: block;
     margin: auto;
+    text-align: center;
   }
 }
 
 h1 {
   text-align: center;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: $break-point) {
     font-size: 1.6em;
   }
 }
