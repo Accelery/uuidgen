@@ -8,6 +8,7 @@ router.get('/v4/:number', function(req, res, next) {
   let uuids = [];
   let message = 'invalid request.';
   let status = 400;
+
   // Parse param to number.
   let num = +req.params.number;
   if (num) {
