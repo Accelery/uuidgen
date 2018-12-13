@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import * as copy from 'copy-to-clipboard';
 import { environment } from 'src/environments/environment';
+import { AnalyticsService } from 'src/app/analytics.service';
 
 @Component({
   selector: 'app-uuid',
@@ -15,7 +16,11 @@ export class UuidComponent implements OnInit, OnDestroy {
   uuid: string;
   private HTTP_API_ENDPOINT: string;
   private copyTimeout: number;
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private analyticsService: AnalyticsService
+  ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe((paramsMap: ParamMap) => {
@@ -33,6 +38,8 @@ export class UuidComponent implements OnInit, OnDestroy {
 
   copyToClip() {
     // Reset everything!
+    this.analyticsService.emitEvent('click', 'copyToClipboard');
+
     this.copied = false;
     window.clearTimeout(this.copyTimeout);
 
@@ -44,6 +51,7 @@ export class UuidComponent implements OnInit, OnDestroy {
   }
 
   fetchUuid() {
+    this.analyticsService.emitEvent('click', 'refreshUuid');
     this.http
       .get<{ message: string; uuid: string }>(this.HTTP_API_ENDPOINT)
       .subscribe(response => {
