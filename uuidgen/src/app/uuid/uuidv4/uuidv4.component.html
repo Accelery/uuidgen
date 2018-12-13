@@ -1,1 +1,4 @@
 <p>uuidv4 works! {{ uuid }}</p>
+
+<button mat-raised-button (click)="copyToClip()">Copy!</button>
+<span *ngIf="copied">Copied</span>
