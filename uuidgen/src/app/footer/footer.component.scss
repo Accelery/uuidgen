@@ -3,12 +3,11 @@ a {
 }
 
 .footer {
-  background-color: darkgray;
-  padding: 5px;
-  position: absolute;
-  bottom: 0;
+  width: 100%;
+  text-align: center;
+  margin: 10px 0;
 }
 
-#disclaimer {
-  font-size: 12px;
+#author {
+  margin: auto;
 }
