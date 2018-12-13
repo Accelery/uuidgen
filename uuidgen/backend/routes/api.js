@@ -3,11 +3,12 @@ const uuidv4 = require('uuid/v4');
 
 var router = express.Router();
 
-/* GET home page. */
+/* GET multiple V4 UUIDs. */
 router.get('/v4/:number', function(req, res, next) {
   let uuids = [];
   let message = 'invalid request.';
   let status = 400;
+  // Parse param to number.
   let num = +req.params.number;
   if (num) {
     message = 'OK';
@@ -24,6 +25,7 @@ router.get('/v4/:number', function(req, res, next) {
   res.status(status).json({ uuids, message });
 });
 
+/** GET one v4 UUID. */
 router.get('/v4', function(req, res, next) {
   const uuid = uuidv4();
   const message = 'OK';
