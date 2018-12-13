@@ -1,6 +1,16 @@
-<h2>Freshly generated V{{ uuidVersion }} UUID 🌟</h2>
+<mat-card>
+  <h1>Freshly generated UUIDs 🌟</h1>
 
-<pre>{{ uuid }}</pre>
+  <p>Your new Version {{ uuidVersion }} UUID:</p>
+  <code class="uuid">{{ uuid }}</code>
 
-<button mat-raised-button (click)="copyToClip()">Copy!</button>
-<span *ngIf="copied">Copied</span>
+  <button mat-icon-button (click)="refresh()">
+    <mat-icon>refresh</mat-icon>
+  </button>
+  <button mat-icon-button (click)="copyToClip()">
+    <mat-icon>file_copy</mat-icon>
+  </button>
+  <button mat-icon-button color="primary" *ngIf="copied">
+    <mat-icon>check</mat-icon>
+  </button>
+</mat-card>

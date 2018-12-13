@@ -4,6 +4,8 @@ import {
   MatButtonModule,
   MatCheckboxModule,
   MatToolbarModule,
+  MatIconModule,
+  MatCardModule,
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -20,6 +22,8 @@ import { UuidComponent } from './uuid/uuid/uuid.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatToolbarModule,
+    MatIconModule,
+    MatCardModule,
     HttpClientModule,
     AppRoutingModule,
   ],

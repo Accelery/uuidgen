@@ -26,6 +26,9 @@ export class UuidComponent implements OnInit, OnDestroy {
     });
   }
 
+  refresh() {
+    this.fetchUuid();
+  }
   ngOnDestroy() {}
 
   copyToClip() {
@@ -36,7 +39,7 @@ export class UuidComponent implements OnInit, OnDestroy {
     const success = copy(this.uuid);
     if (success) {
       this.copied = true;
-      this.copyTimeout = window.setTimeout(() => (this.copied = false), 2000);
+      this.copyTimeout = window.setTimeout(() => (this.copied = false), 1000);
     }
   }
 
