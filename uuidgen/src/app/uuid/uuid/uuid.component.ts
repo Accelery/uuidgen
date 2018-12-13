@@ -14,6 +14,7 @@ export class UuidComponent implements OnInit, OnDestroy {
   uuidVersion: string;
   copied = false;
   uuid: string;
+  isLoading = true;
   private HTTP_API_ENDPOINT: string;
   private copyTimeout: number;
   constructor(
@@ -52,9 +53,11 @@ export class UuidComponent implements OnInit, OnDestroy {
 
   fetchUuid() {
     this.analyticsService.emitEvent('click', 'refreshUuid');
+    this.isLoading = true;
     this.http
       .get<{ message: string; uuid: string }>(this.HTTP_API_ENDPOINT)
       .subscribe(response => {
+        this.isLoading = false;
         this.uuid = response.uuid;
       });
   }

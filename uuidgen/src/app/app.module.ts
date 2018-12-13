@@ -6,6 +6,7 @@ import {
   MatToolbarModule,
   MatIconModule,
   MatCardModule,
+  MatProgressSpinnerModule,
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -26,6 +27,7 @@ import { environment } from '../environments/environment';
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
+    MatProgressSpinnerModule,
     HttpClientModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', {

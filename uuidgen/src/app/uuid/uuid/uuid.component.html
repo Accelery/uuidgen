@@ -1,16 +1,18 @@
 <mat-card>
   <h1>Freshly generated UUIDs 🌟</h1>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <div *ngIf="!isLoading">
+    <p>Your new Version {{ uuidVersion }} UUID:</p>
+    <code class="uuid">{{ uuid }}</code>
 
-  <p>Your new Version {{ uuidVersion }} UUID:</p>
-  <code class="uuid">{{ uuid }}</code>
-
-  <button mat-icon-button (click)="refresh()">
-    <mat-icon>refresh</mat-icon>
-  </button>
-  <button mat-icon-button (click)="copyToClip()">
-    <mat-icon>file_copy</mat-icon>
-  </button>
-  <button mat-icon-button color="primary" *ngIf="copied">
-    <mat-icon>check</mat-icon>
-  </button>
+    <button mat-icon-button (click)="refresh()">
+      <mat-icon>refresh</mat-icon>
+    </button>
+    <button mat-icon-button (click)="copyToClip()">
+      <mat-icon>file_copy</mat-icon>
+    </button>
+    <button mat-icon-button color="primary" *ngIf="copied">
+      <mat-icon>check</mat-icon>
+    </button>
+  </div>
 </mat-card>
