@@ -1,7 +1,7 @@
 {
   "name": "UUID Generator",
   "short_name": "UUID Generator",
-  "theme_color": "#c2185b",
+  "theme_color": "#C2185B",
   "background_color": "#303030",
   "display": "standalone",
   "scope": "/",
