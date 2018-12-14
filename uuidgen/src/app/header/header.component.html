@@ -5,6 +5,10 @@
 
   <!-- This fills the remaining space of the current row -->
   <span class="spacer"></span>
-  <a [routerLink]="['/v/1']" routerLinkActive="active">UUID V1</a>
-  <a [routerLink]="['/v/4']" routerLinkActive="active">UUID V4</a>
+  <nav>
+    <ul>
+      <li><a [routerLink]="['/v/1']" routerLinkActive="active">UUID V1</a></li>
+      <li><a [routerLink]="['/v/4']" routerLinkActive="active">UUID V4</a></li>
+    </ul>
+  </nav>
 </mat-toolbar>
