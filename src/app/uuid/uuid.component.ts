@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import * as copy from 'copy-to-clipboard';
 import { environment } from 'src/environments/environment';
 import { AnalyticsService } from 'src/app/analytics.service';
-import { UuidService } from '../uuid.service';
+import { UuidService } from './uuid.service';
 import { MatSlideToggleChange } from '@angular/material';
 
 @Component({
@@ -26,7 +26,7 @@ export class UuidComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     private analyticsService: AnalyticsService,
-    private uuidService: UuidService
+    private uuidService: UuidService,
   ) {}
 
   ngOnInit() {
@@ -88,7 +88,7 @@ export class UuidComponent implements OnInit {
             this.isLoading = false;
             this.clientOnly = true;
             this.fetchUuid();
-          }
+          },
         );
     }
   }
