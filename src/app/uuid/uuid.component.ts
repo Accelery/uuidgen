@@ -5,7 +5,7 @@ import * as copy from 'copy-to-clipboard';
 import { environment } from 'src/environments/environment';
 import { AnalyticsService } from 'src/app/analytics.service';
 import { UuidService } from './uuid.service';
-import { MatSlideToggleChange } from '@angular/material';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-uuid',
