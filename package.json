@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod"
+    "build": "ng build --prod",
+    "deploy": "now --prod"
   },
   "private": true,
   "dependencies": {
@@ -38,6 +39,7 @@
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.1",
     "ts-node": "~7.0.0",
+    "now": "^16.3.1",
     "tslint": "~5.11.0"
   }
 }
