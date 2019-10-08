@@ -23,7 +23,7 @@ module.exports = (req, res) => {
 
     res.status(status).json({ uuids, statusText });
   } else {
-    const uuid = uuid();
+    const uuid = uuidFn();
     const statusText = 'OK';
     res.status(200).json({ uuid, statusText });
   }
