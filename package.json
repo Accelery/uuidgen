@@ -18,7 +18,7 @@
     "@angular/material": "^8.2.3",
     "@angular/platform-browser": "^8.2.14",
     "@angular/platform-browser-dynamic": "^8.2.14",
-    "@angular/pwa": "^0.803.21",
+    "@angular/pwa": "^0.803.22",
     "@angular/router": "^8.2.14",
     "@angular/service-worker": "^8.2.14",
     "copy-to-clipboard": "^3.2.0",
@@ -30,19 +30,17 @@
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.803.21",
-    "@angular/cli": "^8.3.21",
+    "@angular-devkit/build-angular": "^0.803.22",
+    "@angular/cli": "^8.3.22",
     "@angular/compiler-cli": "^8.2.14",
     "@angular/language-service": "^8.2.14",
     "@types/google.analytics": "0.0.39",
     "@types/node": "~8.9.4",
     "@types/uuid": "^3.4.6",
     "codelyzer": "^5.2.1",
-    "express": "^4.17.1",
-    "now": "^16.7.1",
-    "serverless-http": "^2.3.0",
+    "now": "^16.7.3",
     "ts-node": "~7.0.0",
-    "tslint": "^5.11.0",
-    "typescript": "^3.5.3"
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.4"
   }
 }
