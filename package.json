@@ -41,6 +41,6 @@
     "now": "^16.7.3",
     "ts-node": "~7.0.0",
     "tslint": "^5.20.1",
-    "typescript": "^3.7.4"
+    "typescript": "^3.5.3"
   }
 }
