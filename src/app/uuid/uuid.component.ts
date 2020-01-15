@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import * as copy from 'copy-to-clipboard';
-import { environment } from 'src/environments/environment';
-import { AnalyticsService } from 'src/app/analytics.service';
-import { UuidService } from './uuid.service';
+import { Component, OnInit } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import * as copy from 'copy-to-clipboard';
+import { AnalyticsService } from 'src/app/analytics.service';
+import { environment } from 'src/environments/environment';
+import { UuidService } from './uuid.service';
 
 @Component({
   selector: 'app-uuid',
