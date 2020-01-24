@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import * as copy from 'copy-to-clipboard';
+import { tap } from 'rxjs/operators';
 import { AnalyticsService } from 'src/app/analytics.service';
 import { environment } from 'src/environments/environment';
 import { UuidService } from './uuid.service';
@@ -14,12 +15,11 @@ import { UuidService } from './uuid.service';
 })
 export class UuidComponent implements OnInit {
   uuidVersion: number;
+  uuid = '00000000-0000-0000-0000-000000000000';
   copied = false;
-  uuid: string;
   isLoading = true;
   clientOnly = false;
   openOptions = false;
-  private HTTP_API_ENDPOINT: string;
   private copyTimeout: number;
   constructor(
     private route: ActivatedRoute,
@@ -31,22 +31,14 @@ export class UuidComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe((paramsMap: ParamMap) => {
-      this.initializeUuid();
       this.uuidVersion = +paramsMap.get('version');
       if (this.uuidVersion) {
-        this.HTTP_API_ENDPOINT =
-          environment.apiEndpoint + '/v' + this.uuidVersion;
         this.fetchUuid();
       } else {
         this.router.navigate(['v', '4']);
       }
     });
   }
-
-  private initializeUuid() {
-    this.uuid = '00000000-0000-0000-0000-000000000000';
-  }
-
   refresh() {
     this.fetchUuid();
   }
@@ -54,6 +46,7 @@ export class UuidComponent implements OnInit {
   onSliderChange($event: MatSlideToggleChange) {
     this.clientOnly = !$event.checked;
   }
+
   toggleShowOptions() {
     this.openOptions = !this.openOptions;
   }
@@ -77,15 +70,19 @@ export class UuidComponent implements OnInit {
       this.isLoading = false;
     } else {
       this.analyticsService.emitEvent('click', 'refreshUuidServer');
+      const httpEndpoint = `${environment.apiEndpoint}/v${this.uuidVersion}`;
       this.http
-        .get<{ message: string; uuid: string }>(this.HTTP_API_ENDPOINT)
+        .get<[string]>(httpEndpoint)
+        .pipe(
+          tap(() => {
+            this.isLoading = false;
+          }),
+        )
         .subscribe(
           response => {
-            this.isLoading = false;
-            this.uuid = response.uuid;
+            this.uuid = response[0];
           },
-          error => {
-            this.isLoading = false;
+          () => {
             this.clientOnly = true;
             this.fetchUuid();
           },
