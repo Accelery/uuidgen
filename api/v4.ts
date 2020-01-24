@@ -6,6 +6,5 @@ import { apiHelper } from './_apiHandler';
  * Responds to any HTTP request.
  */
 export default (request: NowRequest, response: NowResponse) => {
-  const result = apiHelper(v4, request);
-  response.json(result);
+  response.json(apiHelper(v4, request));
 };

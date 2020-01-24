@@ -77,19 +77,17 @@ export class UuidComponent implements OnInit {
       this.isLoading = false;
     } else {
       this.analyticsService.emitEvent('click', 'refreshUuidServer');
-      this.http
-        .get<{ message: string; uuid: string }>(this.HTTP_API_ENDPOINT)
-        .subscribe(
-          response => {
-            this.isLoading = false;
-            this.uuid = response.uuid;
-          },
-          error => {
-            this.isLoading = false;
-            this.clientOnly = true;
-            this.fetchUuid();
-          },
-        );
+      this.http.get<[string]>(this.HTTP_API_ENDPOINT).subscribe(
+        response => {
+          this.isLoading = false;
+          this.uuid = response[0];
+        },
+        error => {
+          this.isLoading = false;
+          this.clientOnly = true;
+          this.fetchUuid();
+        },
+      );
     }
   }
 }
