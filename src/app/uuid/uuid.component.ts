@@ -67,7 +67,7 @@ export class UuidComponent implements OnInit {
       this.isLoading = false;
     } else {
       this.analyticsService.emitEvent('click', 'refreshUuidServer');
-      const httpEndpoint = `${environment.apiEndpoint}/v/${version}`;
+      const httpEndpoint = `${environment.apiEndpoint}/v${version}`;
       this.http
         .get<[string]>(httpEndpoint)
         .pipe(
