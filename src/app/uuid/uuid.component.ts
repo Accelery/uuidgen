@@ -59,7 +59,7 @@ export class UuidComponent implements OnInit {
     }
   }
 
-  fetchUuid(version: number) {
+  fetchUuid(version = this.uuidVersion) {
     this.isLoading = true;
     if (this.clientOnly) {
       this.analyticsService.emitEvent('click', 'refreshUuidClient');
