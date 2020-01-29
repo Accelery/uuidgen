@@ -4,7 +4,7 @@ import { v1, v4 } from 'uuid';
 /**
  * Responds to any HTTP request.
  */
-export default async (req: NowRequest) => {
+export default async (req: NowRequest, res: NowResponse) => {
   let uuidFn;
   switch (+req.query.version) {
     case 1:
@@ -19,5 +19,5 @@ export default async (req: NowRequest) => {
   for (let i = 0; i < num; i++) {
     uuids.push(uuidFn());
   }
-  return uuids;
+  res.json(uuids);
 };
