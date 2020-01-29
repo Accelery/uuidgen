@@ -33,14 +33,11 @@ export class UuidComponent implements OnInit {
     this.route.paramMap.subscribe((paramsMap: ParamMap) => {
       this.uuidVersion = +paramsMap.get('version');
       if (this.uuidVersion) {
-        this.fetchUuid();
+        this.fetchUuid(this.uuidVersion);
       } else {
         this.router.navigate(['v', '4']);
       }
     });
-  }
-  refresh() {
-    this.fetchUuid();
   }
 
   onSliderChange($event: MatSlideToggleChange) {
@@ -62,15 +59,15 @@ export class UuidComponent implements OnInit {
     }
   }
 
-  private fetchUuid() {
+  fetchUuid(version: number) {
     this.isLoading = true;
     if (this.clientOnly) {
       this.analyticsService.emitEvent('click', 'refreshUuidClient');
-      this.uuid = this.uuidService.makeUuid(this.uuidVersion);
+      this.uuid = this.uuidService.makeUuid(version);
       this.isLoading = false;
     } else {
       this.analyticsService.emitEvent('click', 'refreshUuidServer');
-      const httpEndpoint = `${environment.apiEndpoint}/v${this.uuidVersion}`;
+      const httpEndpoint = `${environment.apiEndpoint}/v/${version}`;
       this.http
         .get<[string]>(httpEndpoint)
         .pipe(
@@ -84,7 +81,7 @@ export class UuidComponent implements OnInit {
           },
           () => {
             this.clientOnly = true;
-            this.fetchUuid();
+            this.fetchUuid(version);
           },
         );
     }
