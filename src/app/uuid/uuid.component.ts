@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import * as copy from 'copy-to-clipboard';
-import { tap } from 'rxjs/operators';
 import { AnalyticsService } from 'src/app/analytics.service';
 import { environment } from 'src/environments/environment';
 import { UuidService } from './uuid.service';
@@ -68,22 +67,17 @@ export class UuidComponent implements OnInit {
     } else {
       this.analyticsService.emitEvent('click', 'refreshUuidServer');
       const httpEndpoint = `${environment.apiEndpoint}/v/${version}`;
-      this.http
-        .get<[string]>(httpEndpoint)
-        .pipe(
-          tap(() => {
-            this.isLoading = false;
-          }),
-        )
-        .subscribe(
-          response => {
-            this.uuid = response[0];
-          },
-          () => {
-            this.clientOnly = true;
-            this.fetchUuid(version);
-          },
-        );
+      this.http.get<string[]>(httpEndpoint).subscribe(
+        (response) => {
+          this.isLoading = false;
+          this.uuid = response[0];
+        },
+        () => {
+          this.isLoading = false;
+          this.clientOnly = true;
+          this.fetchUuid(version);
+        },
+      );
     }
   }
 }
