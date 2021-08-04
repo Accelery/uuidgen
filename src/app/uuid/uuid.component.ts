@@ -1,10 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import * as copy from 'copy-to-clipboard';
 import { AnalyticsService } from 'src/app/analytics.service';
-import { environment } from 'src/environments/environment';
 import { UuidService } from './uuid.service';
 
 @Component({
@@ -17,13 +14,10 @@ export class UuidComponent implements OnInit {
   uuid = '00000000-0000-0000-0000-000000000000';
   copied = false;
   isLoading = true;
-  clientOnly = false;
-  openOptions = false;
   private copyTimeout: number;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private http: HttpClient,
     private analyticsService: AnalyticsService,
     private uuidService: UuidService,
   ) {}
@@ -39,14 +33,6 @@ export class UuidComponent implements OnInit {
     });
   }
 
-  onSliderChange($event: MatSlideToggleChange) {
-    this.clientOnly = !$event.checked;
-  }
-
-  toggleShowOptions() {
-    this.openOptions = !this.openOptions;
-  }
-
   copyToClip() {
     this.analyticsService.emitEvent('click', 'copyToClipboard');
     this.copied = false;
@@ -60,24 +46,8 @@ export class UuidComponent implements OnInit {
 
   fetchUuid(version = this.uuidVersion) {
     this.isLoading = true;
-    if (this.clientOnly) {
       this.analyticsService.emitEvent('click', 'refreshUuidClient');
       this.uuid = this.uuidService.makeUuid(version);
       this.isLoading = false;
-    } else {
-      this.analyticsService.emitEvent('click', 'refreshUuidServer');
-      const httpEndpoint = `${environment.apiEndpoint}/v/${version}`;
-      this.http.get<string[]>(httpEndpoint).subscribe(
-        (response) => {
-          this.isLoading = false;
-          this.uuid = response[0];
-        },
-        () => {
-          this.isLoading = false;
-          this.clientOnly = true;
-          this.fetchUuid(version);
-        },
-      );
-    }
   }
 }
