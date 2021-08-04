@@ -26,6 +26,7 @@ export class UuidComponent implements OnInit {
     this.route.paramMap.subscribe((paramsMap: ParamMap) => {
       this.uuidVersion = +paramsMap.get('version');
       if (this.uuidVersion) {
+        this.isLoading = false;
         this.fetchUuid(this.uuidVersion);
       } else {
         this.router.navigate(['v', '4']);
@@ -40,14 +41,12 @@ export class UuidComponent implements OnInit {
     const success = copy(this.uuid);
     if (success) {
       this.copied = true;
-      this.copyTimeout = window.setTimeout(() => (this.copied = false), 1000);
+      this.copyTimeout = window.setTimeout(() => (this.copied = false), 1500);
     }
   }
 
   fetchUuid(version = this.uuidVersion) {
-    this.isLoading = true;
     this.analyticsService.emitEvent('click', 'refreshUuidClient');
     this.uuid = this.uuidService.makeUuid(version);
-    this.isLoading = false;
   }
 }
