@@ -46,8 +46,8 @@ export class UuidComponent implements OnInit {
 
   fetchUuid(version = this.uuidVersion) {
     this.isLoading = true;
-      this.analyticsService.emitEvent('click', 'refreshUuidClient');
-      this.uuid = this.uuidService.makeUuid(version);
-      this.isLoading = false;
+    this.analyticsService.emitEvent('click', 'refreshUuidClient');
+    this.uuid = this.uuidService.makeUuid(version);
+    this.isLoading = false;
   }
 }
