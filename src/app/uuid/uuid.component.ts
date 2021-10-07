@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import * as copy from 'copy-to-clipboard';
+import copy from 'copy-text-to-clipboard';
 import { AnalyticsService } from 'src/app/analytics.service';
 import { UuidService } from './uuid.service';
 
@@ -13,7 +13,6 @@ export class UuidComponent implements OnInit {
   uuidVersion: number;
   uuid = '00000000-0000-0000-0000-000000000000';
   copied = false;
-  isLoading = true;
   private copyTimeout: number;
   constructor(
     private route: ActivatedRoute,
@@ -26,7 +25,6 @@ export class UuidComponent implements OnInit {
     this.route.paramMap.subscribe((paramsMap: ParamMap) => {
       this.uuidVersion = +paramsMap.get('version');
       if (this.uuidVersion) {
-        this.isLoading = false;
         this.fetchUuid(this.uuidVersion);
       } else {
         this.router.navigate(['v', '4']);

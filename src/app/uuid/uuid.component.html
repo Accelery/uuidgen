@@ -1,7 +1,6 @@
 <mat-card>
   <h1>Freshly generated UUIDs 🌟</h1>
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <div *ngIf="!isLoading">
+  <div>
     <p>Your new Version {{ uuidVersion }} UUID:</p>
     <textarea class="uuid"
               cols="38"

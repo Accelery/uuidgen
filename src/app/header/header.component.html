@@ -1,14 +1,14 @@
 <mat-toolbar color="primary">
-  <a [routerLink]="['/v/4']"
-    ><span>⚡ UUID Generator <span class="lightning">⚡</span></span></a
-  >
+  <a [routerLink]="['/v/4']"><span>⚡ UUID Generator <span class="lightning">⚡</span></span></a>
 
   <!-- This fills the remaining space of the current row -->
   <span class="spacer"></span>
   <nav>
     <ul>
-      <li><a [routerLink]="['/v/1']" routerLinkActive="active">UUID V1</a></li>
-      <li><a [routerLink]="['/v/4']" routerLinkActive="active">UUID V4</a></li>
+      <li><a [routerLink]="['/v/1']"
+           routerLinkActive="active">UUID V1</a></li>
+      <li><a [routerLink]="['/v/4']"
+           routerLinkActive="active">UUID V4</a></li>
     </ul>
   </nav>
 </mat-toolbar>
