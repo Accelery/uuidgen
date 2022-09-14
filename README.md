@@ -1,1 +1,1 @@
-# uuidgen, now on Firebase
+# uuidgen, on Vercel
