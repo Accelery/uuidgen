@@ -112,5 +112,7 @@
       }
     }
   },
-  "defaultProject": "uuidgen"
+  "cli": {
+    "analytics": "3caada9e-946c-4a64-8c9b-da8862723619"
+  }
 }
