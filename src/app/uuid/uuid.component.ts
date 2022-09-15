@@ -1,6 +1,6 @@
+import { Clipboard } from '@angular/cdk/clipboard';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import copy from 'copy-text-to-clipboard';
 import { AnalyticsService } from 'src/app/analytics.service';
 import { UuidService } from './uuid.service';
 
@@ -16,6 +16,7 @@ export class UuidComponent implements OnInit {
   private copyTimeout: number;
   constructor(
     private route: ActivatedRoute,
+    private clipboard: Clipboard,
     private router: Router,
     private analyticsService: AnalyticsService,
     private uuidService: UuidService,
@@ -36,7 +37,7 @@ export class UuidComponent implements OnInit {
     this.analyticsService.emitEvent('click', 'copyToClipboard');
     this.copied = false;
     window.clearTimeout(this.copyTimeout);
-    const success = copy(this.uuid);
+    const success = this.clipboard.copy(this.uuid);
     if (success) {
       this.copied = true;
       this.copyTimeout = window.setTimeout(() => (this.copied = false), 1500);
