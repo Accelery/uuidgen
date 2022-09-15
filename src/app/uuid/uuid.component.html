@@ -2,28 +2,18 @@
   <h1>Freshly generated UUIDs 🌟</h1>
   <div>
     <p>Your new Version {{ uuidVersion }} UUID:</p>
-    <textarea class="uuid"
-              cols="38"
-              rows="1"
-              #MyUuid
-              (click)="MyUuid.select()"
-              [defaultValue]="uuid"
-              readonly></textarea>
+    <textarea class="uuid" cols="38" rows="1" #MyUuid (click)="MyUuid.select()"
+              [defaultValue]="uuid" readonly></textarea>
     <span class="button-row">
-      <button mat-icon-button
-              (click)="fetchUuid()"
-              matTooltip="Get a new UUID."
-              matTooltipShowDelay="500">
+      <button mat-icon-button (click)="fetchUuid()" aria-label="Refresh new UUID"
+              matTooltip="Get a new UUID." matTooltipShowDelay="500">
         <mat-icon>refresh</mat-icon>
       </button>
-      <button mat-icon-button
-              (click)="copyToClip()"
-              matTooltip="Copy UUID to clipboard"
-              matTooltipShowDelay="500">
+      <button mat-icon-button aria-label="Copy UUID to clipboard" (click)="copyToClip()"
+              matTooltip="Copy UUID to clipboard" matTooltipShowDelay="500">
         <mat-icon>file_copy</mat-icon>
       </button>
-      <button mat-icon-button
-              color="accent"
+      <button mat-icon-button color="accent" aria-label="No action. Confirm UUID copied"
               [hidden]="!copied">
         <mat-icon>check</mat-icon>
       </button>
@@ -58,8 +48,7 @@
   <mat-card-content>
     <p>
       UUIDs generated from this site are
-      <a href="https://www.ietf.org/rfc/rfc4122.txt"
-         target="_blank">
+      <a href="https://www.ietf.org/rfc/rfc4122.txt" target="_blank">
         RFC 4122
         <mat-icon inline>open_in_new</mat-icon>
       </a>
