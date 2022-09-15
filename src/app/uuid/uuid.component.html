@@ -3,7 +3,7 @@
   <div>
     <p>Your new Version {{ uuidVersion }} UUID:</p>
     <textarea class="uuid" cols="38" rows="1" #MyUuid (click)="MyUuid.select()"
-              [defaultValue]="uuid" readonly></textarea>
+              [defaultValue]="uuid" readonly aria-label="UUID"></textarea>
     <span class="button-row">
       <button mat-icon-button (click)="fetchUuid()" aria-label="Refresh new UUID"
               matTooltip="Get a new UUID." matTooltipShowDelay="500">
