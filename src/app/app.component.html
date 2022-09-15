@@ -1,19 +1,20 @@
 <!-- The content below is only a placeholder and can be replaced. -->
-<mat-toolbar color="primary">
-  <a [routerLink]="['/v/4']"><span>⚡ UUID Generator <span class="lightning">⚡</span></span></a>
+<div class="flex text-base sm:text-xl font-medium py-4 bg-fuchsia-700 text-white px-4">
+  <a [routerLink]="['/v/4']"><span>⚡ UUID Generator <span
+            class="hidden sm:inline">⚡</span></span></a>
 
   <!-- This fills the remaining space of the current row -->
-  <span class="spacer"></span>
+  <span class="flex-grow"></span>
   <nav>
     <div>
-      <a [routerLink]="['/v/1']" routerLinkActive="active">UUID V1</a>
-      <a [routerLink]="['/v/4']" routerLinkActive="active">UUID V4</a>
+      <a [routerLink]="['/v/1']" routerLinkActive="text-teal-400">UUID V1</a>
+      <a [routerLink]="['/v/4']" routerLinkActive="text-teal-400">UUID V4</a>
     </div>
   </nav>
-</mat-toolbar>
+</div>
 <router-outlet></router-outlet>
-<div class="footer">
-  <div id="author">
+<div class="text-center mt-8">
+  <div>
     By <a href="https://accelery.be/" target="_blank">Accelery</a>
   </div>
 </div>
